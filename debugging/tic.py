@@ -7,7 +7,7 @@ def print_board(board):
     """
     for row in board:
         print(" | ".join(row))
-        print("-" * 5)
+        print("__" * 5)
 
 def check_winner(board):
     """
@@ -56,10 +56,13 @@ def tic_tac_toe():
             print("Invalid input. Please enter a number within the range (0, 1, or 2).")
             continue
         board[row][col] = player
-        player = "O" if player == "X" else "X"
-
+        player = "O" if player == "X" else "X"  # Update player after each move
     print_board(board)
+    
+    # After the game loop ends, check for the winner
     if check_winner(board):
+        # If there's a winner, the player symbol should be switched back
+        player = "O" if player == "X" else "X"
         print("Player " + player + " wins!")
     else:
         print("It's a draw!")
